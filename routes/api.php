@@ -5,6 +5,11 @@ use App\Http\Controllers\Backend\API\AddressController;
 use App\Http\Controllers\Backend\API\DashboardController;
 use App\Http\Controllers\Backend\API\NotificationsController;
 use App\Http\Controllers\Backend\API\SettingController;
+use App\Http\Controllers\Api\PatientController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,8 +20,9 @@ use App\Http\Controllers\Backend\API\SettingController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+
+Route::post('patients/register', [PatientController::class, 'register']);
+Route::get('patients/verify/{token}', [PatientController::class, 'verify']);
 
 Route::get('user-detail', [AuthController::class, 'userDetails']);
 
